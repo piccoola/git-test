@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<title>Simple Map</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+		<style>
+					#map {
+				height: 100%;
+			}
+		
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+	<div>
+    {{# each items }}
+    <article class="item">
+        <div>Title: {{ this.title }}</div>
+        <div>Content: {{ this.content }}</div>
+
+    </article>
+    {{/each}}
+</div>
+<input type="article" name="1"></input>
+		<div id="map"></div>
+<script src="test.js"></script>	   
+			<script>
+
+
+			var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			function initMap() {
+
+
+     			var map = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: 30, lng: 30},
+					zoom: 3
+				});
+
+				 var markers = loc.map(function(loc, i) {
+					return new google.maps.Marker({
+						position: loc,
+						label: labels[i % labels.length]
+					});
+				});
+				 var markerCluster = new MarkerClusterer(map, markers,
+						{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+				}
+
+			var loc = document.getElementById('item');
+			
+			
+		</script> 
+		<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+		</script>
+	  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrDaf2TYWbKEt9Pm57eTxyJBsDs5UtQv8&callback=initMap">
+    </script>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	</body>
+</html> 
